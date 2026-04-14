@@ -1,0 +1,17 @@
+﻿<section>
+  <h2>Catalogo de productos</h2>
+  <p *ngIf="cargando">Cargando productos...</p>
+
+  <div class="grid" *ngIf="!cargando">
+    <article class="card" *ngFor="let producto of productos">
+      <img [src]="producto.imagen || 'https://via.placeholder.com/300x180?text=CARBONO'" [alt]="producto.nombre">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.marca }} | {{ producto.categoria }}</p>
+      <strong>${{ producto.precio }}</strong>
+      <div class="actions">
+        <a [routerLink]="['/productos', producto.id]">Ver detalle</a>
+        <button type="button" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+      </div>
+    </article>
+  </div>
+</section>

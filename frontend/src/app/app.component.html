@@ -1,0 +1,14 @@
+﻿<header class="header">
+  <h1>CARBONO POWERLAB</h1>
+  <nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/catalogo" routerLinkActive="active">Catalogo</a>
+    <a routerLink="/agregar-producto" routerLinkActive="active">Agregar producto</a>
+    <a routerLink="/carrito" routerLinkActive="active">Carrito</a>
+    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,22 @@
+﻿<section>
+  <h2>Agregar producto</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <input type="text" placeholder="Nombre" formControlName="nombre">
+    <input type="text" placeholder="Categoria" formControlName="categoria">
+    <input type="text" placeholder="Marca" formControlName="marca">
+    <input type="number" placeholder="Precio" formControlName="precio">
+    <input type="number" placeholder="Stock" formControlName="stock">
+    <input type="text" placeholder="URL de imagen" formControlName="imagen">
+    <textarea placeholder="Descripcion" formControlName="descripcion"></textarea>
+
+    <label>
+      <input type="checkbox" formControlName="disponible">
+      Disponible
+    </label>
+
+    <button type="submit">Guardar producto</button>
+  </form>
+
+  <p>{{ mensaje }}</p>
+</section>

@@ -1,0 +1,21 @@
+﻿form {
+  display: grid;
+  gap: 10px;
+  max-width: 540px;
+}
+
+input,
+textarea,
+button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+button {
+  background: #101820;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

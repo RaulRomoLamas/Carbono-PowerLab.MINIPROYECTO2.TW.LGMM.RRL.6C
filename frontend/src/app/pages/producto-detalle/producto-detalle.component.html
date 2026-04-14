@@ -1,0 +1,14 @@
+﻿<section *ngIf="producto; else notFound">
+  <h2>{{ producto.nombre }}</h2>
+  <img [src]="producto.imagen || 'https://via.placeholder.com/600x300?text=CARBONO'" [alt]="producto.nombre">
+  <p><strong>Marca:</strong> {{ producto.marca }}</p>
+  <p><strong>Categoria:</strong> {{ producto.categoria }}</p>
+  <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+  <p><strong>Stock:</strong> {{ producto.stock }}</p>
+  <p>{{ producto.descripcion }}</p>
+  <button type="button" (click)="agregar()">Agregar al carrito</button>
+</section>
+
+<ng-template #notFound>
+  <p>Producto no encontrado.</p>
+</ng-template>
