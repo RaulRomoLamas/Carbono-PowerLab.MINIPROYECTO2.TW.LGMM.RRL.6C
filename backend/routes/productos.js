@@ -1,78 +1,80 @@
 ﻿const express = require('express');
-const pool = require('../db');
+const connection = require('../db');
+const validarProducto = require('../middlewares/validarProducto');
 
 const router = express.Router();
 
-router.get('/', async (_req, res, next) => {
-  try {
-    const [rows] = await pool.query('SELECT * FROM productos');
-    res.json(rows);
-  } catch (error) {
-    next(error);
-  }
+router.get('/', (_req, res, next) => {
+  connection.query('SELECT * FROM productos', (err, results) => {
+    if (err) {
+      return next(err);
+    }
+    return res.json(results);
+  });
 });
 
-router.get('/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const [rows] = await pool.query('SELECT * FROM productos WHERE id = ?', [id]);
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
 
-    if (rows.length === 0) {
+  connection.query('SELECT * FROM productos WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      return next(err);
+    }
+
+    if (!results || results.length === 0) {
       return res.status(404).json({ error: 'Producto no encontrado' });
     }
 
-    return res.json(rows[0]);
-  } catch (error) {
-    return next(error);
-  }
+    return res.json(results[0]);
+  });
 });
 
-router.post('/', async (req, res, next) => {
-  try {
-    const {
-      nombre,
-      categoria,
-      marca,
-      precio,
-      stock,
-      imagen,
-      descripcion,
-      disponible
-    } = req.body;
+router.post('/', validarProducto, (req, res, next) => {
+  const {
+    nombre,
+    categoria,
+    marca,
+    precio,
+    stock,
+    imagen,
+    descripcion,
+    disponible
+  } = req.body;
 
-    const query = `
-      INSERT INTO productos
-      (nombre, categoria, marca, precio, stock, imagen, descripcion, disponible)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+  const query = `
+    INSERT INTO productos
+    (nombre, categoria, marca, precio, stock, imagen, descripcion, disponible)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `;
 
-    const values = [
-      nombre,
-      categoria,
-      marca,
-      precio,
-      stock,
-      imagen,
-      descripcion,
-      disponible ?? true
-    ];
+  const values = [
+    nombre,
+    categoria,
+    marca,
+    Number(precio),
+    Number(stock),
+    imagen,
+    descripcion,
+    Boolean(disponible)
+  ];
 
-    const [result] = await pool.query(query, values);
+  connection.query(query, values, (err, result) => {
+    if (err) {
+      return next(err);
+    }
 
-    res.status(201).json({
+    return res.status(201).json({
       id: result.insertId,
       nombre,
       categoria,
       marca,
-      precio,
-      stock,
+      precio: Number(precio),
+      stock: Number(stock),
       imagen,
       descripcion,
-      disponible: disponible ?? true
+      disponible: Boolean(disponible)
     });
-  } catch (error) {
-    next(error);
-  }
+  });
 });
 
 module.exports = router;

@@ -1,30 +1,30 @@
 ﻿const express = require('express');
-const pool = require('../db');
+const connection = require('../db');
 
 const router = express.Router();
 
-router.post('/', async (req, res, next) => {
-  try {
-    const { nombre, correo, asunto, mensaje } = req.body;
+router.post('/', (req, res, next) => {
+  const { nombre, correo, asunto, mensaje } = req.body;
 
-    const query = `
-      INSERT INTO mensajes
-      (nombre, correo, asunto, mensaje)
-      VALUES (?, ?, ?, ?)
-    `;
+  const query = `
+    INSERT INTO mensajes
+    (nombre, correo, asunto, mensaje)
+    VALUES (?, ?, ?, ?)
+  `;
 
-    const [result] = await pool.query(query, [nombre, correo, asunto, mensaje]);
+  connection.query(query, [nombre, correo, asunto, mensaje], (err, result) => {
+    if (err) {
+      return next(err);
+    }
 
-    res.status(201).json({
+    return res.status(201).json({
       id: result.insertId,
       nombre,
       correo,
       asunto,
       mensaje
     });
-  } catch (error) {
-    next(error);
-  }
+  });
 });
 
 module.exports = router;
