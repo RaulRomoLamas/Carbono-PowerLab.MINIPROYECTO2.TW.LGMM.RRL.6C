@@ -1,0 +1,12 @@
+﻿<section>
+  <h2>Carrito</h2>
+  <p>Total de productos: {{ carritoService.contadorCarrito() }}</p>
+
+  <ul>
+    <li *ngFor="let item of carritoService.items()">
+      {{ item.nombre }} - {{ item.precio | currency }}
+    </li>
+  </ul>
+
+  <p *ngIf="carritoService.contadorCarrito() === 0">Aun no agregas productos.</p>
+</section>

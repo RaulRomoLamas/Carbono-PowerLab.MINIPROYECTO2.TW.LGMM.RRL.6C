@@ -1,0 +1,8 @@
+﻿<section>
+  <h2>Contacto</h2>
+
+  <input type="text" [(ngModel)]="nombre" placeholder="Tu nombre">
+  <button (click)="enviar()">Enviar</button>
+
+  <p *ngIf="mensaje">{{ mensaje }}</p>
+</section>

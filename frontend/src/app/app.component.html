@@ -1,0 +1,14 @@
+﻿<header class="topbar">
+  <h1>CARBONO POWERLAB</h1>
+  <nav>
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/catalogo">Catalogo</a>
+    <a routerLink="/agregar">Agregar</a>
+    <a routerLink="/carrito">Carrito ({{ carritoService.contadorCarrito() }})</a>
+    <a routerLink="/contacto">Contacto</a>
+  </nav>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

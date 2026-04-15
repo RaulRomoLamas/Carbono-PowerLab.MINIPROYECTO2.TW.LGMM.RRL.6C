@@ -1,0 +1,23 @@
+﻿<section>
+  <h2>Catalogo</h2>
+
+  <input
+    type="text"
+    placeholder="Buscar producto"
+    [(ngModel)]="filtro"
+  >
+
+  <p *ngIf="cargando">Cargando productos...</p>
+
+  <div class="grid" *ngIf="!cargando">
+    <div class="card" *ngFor="let producto of productosFiltrados" [ngClass]="{ agotado: producto.stock === 0 }">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.precio | currency }}</p>
+      <img [src]="producto.imagen" [alt]="producto.nombre">
+      <div class="actions">
+        <button [routerLink]="['/producto', producto.id]">Ver detalle</button>
+        <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+</section>

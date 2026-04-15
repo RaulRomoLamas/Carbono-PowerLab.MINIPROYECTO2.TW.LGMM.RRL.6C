@@ -1,0 +1,10 @@
+﻿<section *ngIf="producto; else sinProducto">
+  <h2>{{ producto.nombre }}</h2>
+  <img [src]="producto.imagen" [alt]="producto.nombre">
+  <p>{{ producto.descripcion }}</p>
+  <p>{{ producto.precio | currency }}</p>
+</section>
+
+<ng-template #sinProducto>
+  <p>No se encontro el producto.</p>
+</ng-template>

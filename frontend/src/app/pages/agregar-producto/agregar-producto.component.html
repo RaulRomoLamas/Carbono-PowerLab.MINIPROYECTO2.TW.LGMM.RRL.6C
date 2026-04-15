@@ -1,0 +1,14 @@
+﻿<section>
+  <h2>Agregar producto</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <input type="text" formControlName="nombre" placeholder="Nombre">
+    <input type="number" formControlName="precio" placeholder="Precio">
+    <input type="number" formControlName="stock" placeholder="Stock">
+    <button type="submit">Guardar</button>
+  </form>
+
+  <p *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">Nombre requerido</p>
+  <p *ngIf="form.get('precio')?.invalid && form.get('precio')?.touched">Precio invalido</p>
+  <p>{{ mensaje }}</p>
+</section>
