@@ -2,21 +2,13 @@
   <h2>Agregar producto</h2>
 
   <form [formGroup]="form" (ngSubmit)="guardar()">
-    <input type="text" placeholder="Nombre" formControlName="nombre">
-    <input type="text" placeholder="Categoria" formControlName="categoria">
-    <input type="text" placeholder="Marca" formControlName="marca">
-    <input type="number" placeholder="Precio" formControlName="precio">
-    <input type="number" placeholder="Stock" formControlName="stock">
-    <input type="text" placeholder="URL de imagen" formControlName="imagen">
-    <textarea placeholder="Descripcion" formControlName="descripcion"></textarea>
-
-    <label>
-      <input type="checkbox" formControlName="disponible">
-      Disponible
-    </label>
-
-    <button type="submit">Guardar producto</button>
+    <input type="text" formControlName="nombre" placeholder="Nombre">
+    <input type="number" formControlName="precio" placeholder="Precio">
+    <input type="number" formControlName="stock" placeholder="Stock">
+    <button type="submit">Guardar</button>
   </form>
 
+  <p *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">Nombre requerido</p>
+  <p *ngIf="form.get('precio')?.invalid && form.get('precio')?.touched">Precio invalido</p>
   <p>{{ mensaje }}</p>
 </section>

@@ -1,45 +1,16 @@
-﻿import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-
-import { ApiService } from '../../services/api.service';
+﻿import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-contacto',
-  standalone: true,
-  imports: [ReactiveFormsModule],
+  standalone: false,
   templateUrl: './contacto.component.html',
-  styleUrl: './contacto.component.css'
+  styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent {
+  nombre = '';
   mensaje = '';
-  private readonly fb = inject(FormBuilder);
-  private readonly apiService = inject(ApiService);
-
-  form = this.fb.nonNullable.group({
-    nombre: ['', Validators.required],
-    correo: ['', [Validators.required, Validators.email]],
-    asunto: ['', Validators.required],
-    mensaje: ['', Validators.required]
-  });
 
   enviar(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    const payload = this.form.getRawValue();
-
-    this.apiService.enviarMensaje(payload).subscribe({
-      next: () => {
-        this.mensaje = 'Mensaje enviado correctamente';
-        this.form.reset({
-          nombre: '',
-          correo: '',
-          asunto: '',
-          mensaje: ''
-        });
-      }
-    });
+    this.mensaje = `Gracias por contactarnos, ${this.nombre}`;
   }
 }

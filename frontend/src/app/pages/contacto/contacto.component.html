@@ -1,13 +1,8 @@
 ﻿<section>
   <h2>Contacto</h2>
 
-  <form [formGroup]="form" (ngSubmit)="enviar()">
-    <input type="text" placeholder="Nombre" formControlName="nombre">
-    <input type="email" placeholder="Correo" formControlName="correo">
-    <input type="text" placeholder="Asunto" formControlName="asunto">
-    <textarea placeholder="Mensaje" formControlName="mensaje"></textarea>
-    <button type="submit">Enviar mensaje</button>
-  </form>
+  <input type="text" [(ngModel)]="nombre" placeholder="Tu nombre">
+  <button (click)="enviar()">Enviar</button>
 
-  <p>{{ mensaje }}</p>
+  <p *ngIf="mensaje">{{ mensaje }}</p>
 </section>

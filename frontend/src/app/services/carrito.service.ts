@@ -1,43 +1,18 @@
-﻿import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+﻿import { Injectable, signal } from '@angular/core';
 
 import { Producto } from '../models/producto.model';
 
-export interface ItemCarrito {
-  producto: Producto;
-  cantidad: number;
-}
-
 @Injectable({ providedIn: 'root' })
 export class CarritoService {
-  private readonly itemsSubject = new BehaviorSubject<ItemCarrito[]>([]);
-  readonly items$ = this.itemsSubject.asObservable();
+  private readonly itemsInternos = signal<Producto[]>([]);
+  contadorCarrito = signal(0);
 
-  agregarProducto(producto: Producto): void {
-    const current = [...this.itemsSubject.value];
-    const index = current.findIndex((item) => item.producto.id === producto.id);
-
-    if (index >= 0) {
-      current[index] = {
-        ...current[index],
-        cantidad: current[index].cantidad + 1
-      };
-    } else {
-      current.push({ producto, cantidad: 1 });
-    }
-
-    this.itemsSubject.next(current);
+  items() {
+    return this.itemsInternos();
   }
 
-  eliminarProducto(productoId: number): void {
-    const filtered = this.itemsSubject.value.filter((item) => item.producto.id !== productoId);
-    this.itemsSubject.next(filtered);
-  }
-
-  total(): number {
-    return this.itemsSubject.value.reduce(
-      (acc, item) => acc + item.cantidad * Number(item.producto.precio),
-      0
-    );
+  agregar(producto: Producto): void {
+    this.itemsInternos.update((prev) => [...prev, producto]);
+    this.contadorCarrito.update((total) => total + 1);
   }
 }

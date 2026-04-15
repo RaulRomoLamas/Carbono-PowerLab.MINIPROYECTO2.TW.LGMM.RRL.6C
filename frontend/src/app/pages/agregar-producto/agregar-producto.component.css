@@ -1,21 +1,18 @@
 ﻿form {
   display: grid;
   gap: 10px;
-  max-width: 540px;
+  max-width: 450px;
 }
 
 input,
-textarea,
 button {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font: inherit;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
 }
 
 button {
-  background: #101820;
+  background: #ea580c;
   color: #fff;
   border: none;
-  cursor: pointer;
 }

@@ -1,17 +1,23 @@
 ﻿<section>
-  <h2>Catalogo de productos</h2>
+  <h2>Catalogo</h2>
+
+  <input
+    type="text"
+    placeholder="Buscar producto"
+    [(ngModel)]="filtro"
+  >
+
   <p *ngIf="cargando">Cargando productos...</p>
 
   <div class="grid" *ngIf="!cargando">
-    <article class="card" *ngFor="let producto of productos">
-      <img [src]="producto.imagen || 'https://via.placeholder.com/300x180?text=CARBONO'" [alt]="producto.nombre">
+    <div class="card" *ngFor="let producto of productosFiltrados" [ngClass]="{ agotado: producto.stock === 0 }">
       <h3>{{ producto.nombre }}</h3>
-      <p>{{ producto.marca }} | {{ producto.categoria }}</p>
-      <strong>${{ producto.precio }}</strong>
+      <p>{{ producto.precio | currency }}</p>
+      <img [src]="producto.imagen" [alt]="producto.nombre">
       <div class="actions">
-        <a [routerLink]="['/productos', producto.id]">Ver detalle</a>
-        <button type="button" (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+        <button [routerLink]="['/producto', producto.id]">Ver detalle</button>
+        <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
       </div>
-    </article>
+    </div>
   </div>
 </section>

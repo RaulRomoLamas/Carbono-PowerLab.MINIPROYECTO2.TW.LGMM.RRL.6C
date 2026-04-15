@@ -1,32 +1,12 @@
 ﻿<section>
-  <h2>Carrito de compras</h2>
+  <h2>Carrito</h2>
+  <p>Total de productos: {{ carritoService.contadorCarrito() }}</p>
 
-  <table *ngIf="items.length > 0; else empty">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Subtotal</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items">
-        <td>{{ item.producto.nombre }}</td>
-        <td>{{ item.cantidad }}</td>
-        <td>${{ item.producto.precio }}</td>
-        <td>${{ item.cantidad * item.producto.precio }}</td>
-        <td>
-          <button type="button" (click)="eliminar(item.producto.id)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ul>
+    <li *ngFor="let item of carritoService.items()">
+      {{ item.nombre }} - {{ item.precio | currency }}
+    </li>
+  </ul>
 
-  <ng-template #empty>
-    <p>No hay productos en el carrito.</p>
-  </ng-template>
-
-  <h3>Total: ${{ total() }}</h3>
+  <p *ngIf="carritoService.contadorCarrito() === 0">Aun no agregas productos.</p>
 </section>
