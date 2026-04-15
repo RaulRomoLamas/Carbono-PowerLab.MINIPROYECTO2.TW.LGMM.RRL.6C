@@ -10,4 +10,8 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class CarritoComponent {
   constructor(public carritoService: CarritoService) {}
+
+  eliminar(id: number): void {
+    this.carritoService.eliminarProducto(id);
+  }
 }

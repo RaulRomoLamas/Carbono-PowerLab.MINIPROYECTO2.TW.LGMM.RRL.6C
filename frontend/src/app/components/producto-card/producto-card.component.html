@@ -1,0 +1,9 @@
+﻿<div class="card" [ngClass]="{ stockBajo: producto?.stock <= 5 }">
+  <h3>{{ producto?.nombre }}</h3>
+  <p>{{ producto?.precio | currency }}</p>
+  <img [src]="producto?.imagen" [alt]="producto?.nombre">
+  <div class="actions">
+    <button [routerLink]="['/producto', producto?.id]">Ver detalle</button>
+    <button (click)="agregar.emit(producto)">Agregar</button>
+  </div>
+</div>

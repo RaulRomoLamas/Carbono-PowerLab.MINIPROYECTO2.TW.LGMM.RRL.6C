@@ -12,7 +12,6 @@ import { ProductosService } from '../../services/productos.service';
 })
 export class CatalogoComponent implements OnInit {
   productos: Producto[] = [];
-  filtro = '';
   cargando = false;
 
   constructor(
@@ -33,15 +32,7 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
-  get productosFiltrados(): Producto[] {
-    const q = this.filtro.trim().toLowerCase();
-    if (!q) {
-      return this.productos;
-    }
-    return this.productos.filter((p) => p.nombre.toLowerCase().includes(q));
-  }
-
-  agregarAlCarrito(producto: Producto): void {
-    this.carritoService.agregar(producto);
+  agregarAlCarrito(producto: any): void {
+    this.carritoService.agregarProducto(producto);
   }
 }
