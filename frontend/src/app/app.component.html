@@ -1,12 +1,26 @@
-﻿<header class="topbar">
-  <h1>CARBONO POWERLAB</h1>
-  <nav>
-    <a routerLink="/">Inicio</a>
-    <a routerLink="/catalogo">Catalogo</a>
-    <a routerLink="/agregar">Agregar</a>
-    <a routerLink="/carrito">Carrito ({{ carritoService.contador() }})</a>
-    <a routerLink="/contacto">Contacto</a>
-  </nav>
+﻿<div class="announcement">Envíos en toda la república mexicana · Productos saludables para tu entrenamiento</div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">⚡</div>
+    <div>
+      <h1>CARBONO POWERLAB</h1>
+      <p>Fitness, suplementos y estilo con energía.</p>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <div class="search-wrap">
+      <input type="text" placeholder="Buscar productos..." />
+      <button type="button">Buscar</button>
+    </div>
+    <nav>
+      <a routerLink="/">Inicio</a>
+      <a routerLink="/catalogo">Catálogo</a>
+      <a routerLink="/agregar">Agregar</a>
+      <a routerLink="/carrito">Carrito ({{ carritoService.contador() }})</a>
+      <a routerLink="/contacto">Contacto</a>
+    </nav>
+  </div>
 </header>
 
 <main class="content">

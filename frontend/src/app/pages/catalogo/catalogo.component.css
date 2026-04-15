@@ -1,5 +1,40 @@
-﻿.grid {
-  display: grid;
+﻿.catalog-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   gap: 14px;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  margin-bottom: 24px;
+}
+
+.catalog-header h2 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.catalog-header p {
+  margin: 0;
+  color: #d6d0c2;
+}
+
+.catalog-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255, 242, 155, 0.08);
+  border: 1px solid rgba(255, 242, 155, 0.18);
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+
+.catalog-banner span {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
