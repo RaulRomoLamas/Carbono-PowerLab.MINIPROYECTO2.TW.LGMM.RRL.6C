@@ -1,5 +1,7 @@
 ﻿import { Component } from '@angular/core';
 
+import { ContactoService } from '../../services/contacto.service';
+
 @Component({
   selector: 'app-contacto',
   standalone: false,
@@ -7,10 +9,26 @@
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent {
-  nombre = '';
-  mensaje = '';
+  contacto = {
+    nombre: '',
+    correo: '',
+    asunto: '',
+    mensaje: ''
+  };
+
+  mensajeConfirmacion = '';
+
+  constructor(private readonly contactoService: ContactoService) {}
 
   enviar(): void {
-    this.mensaje = `Gracias por contactarnos, ${this.nombre}`;
+    this.contactoService.enviarMensaje(this.contacto).subscribe(() => {
+      this.mensajeConfirmacion = 'Mensaje enviado correctamente';
+      this.contacto = {
+        nombre: '',
+        correo: '',
+        asunto: '',
+        mensaje: ''
+      };
+    });
   }
 }

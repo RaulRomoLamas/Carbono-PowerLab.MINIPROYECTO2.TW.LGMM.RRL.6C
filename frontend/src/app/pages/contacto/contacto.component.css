@@ -1,5 +1,30 @@
-﻿input,
+﻿form {
+  display: grid;
+  gap: 10px;
+  max-width: 520px;
+}
+
+input,
+textarea,
 button {
   padding: 10px;
-  margin-right: 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font: inherit;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+button {
+  border: none;
+  background: #0f172a;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

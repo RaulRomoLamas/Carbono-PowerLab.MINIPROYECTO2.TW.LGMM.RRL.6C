@@ -1,29 +1,19 @@
 ﻿const express = require('express');
 const connection = require('../db');
+const validarMensaje = require('../middlewares/validarMensaje');
 
 const router = express.Router();
 
-router.post('/', (req, res, next) => {
+router.post('/', validarMensaje, (req, res) => {
   const { nombre, correo, asunto, mensaje } = req.body;
 
-  const query = `
-    INSERT INTO mensajes
-    (nombre, correo, asunto, mensaje)
-    VALUES (?, ?, ?, ?)
-  `;
+  const sql = 'INSERT INTO mensajes (nombre, correo, asunto, mensaje) VALUES (?, ?, ?, ?)';
 
-  connection.query(query, [nombre, correo, asunto, mensaje], (err, result) => {
+  connection.query(sql, [nombre, correo, asunto, mensaje], (err) => {
     if (err) {
-      return next(err);
+      return res.status(500).json(err);
     }
-
-    return res.status(201).json({
-      id: result.insertId,
-      nombre,
-      correo,
-      asunto,
-      mensaje
-    });
+    return res.json({ message: 'Mensaje guardado' });
   });
 });
 

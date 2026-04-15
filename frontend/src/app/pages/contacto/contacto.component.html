@@ -1,8 +1,42 @@
 ﻿<section>
   <h2>Contacto</h2>
 
-  <input type="text" [(ngModel)]="nombre" placeholder="Tu nombre">
-  <button (click)="enviar()">Enviar</button>
+  <form #formContacto="ngForm" (ngSubmit)="enviar()">
+    <input
+      type="text"
+      name="nombre"
+      [(ngModel)]="contacto.nombre"
+      required
+      placeholder="Nombre"
+    >
 
-  <p *ngIf="mensaje">{{ mensaje }}</p>
+    <input
+      type="email"
+      name="correo"
+      [(ngModel)]="contacto.correo"
+      required
+      placeholder="Correo"
+    >
+
+    <input
+      type="text"
+      name="asunto"
+      [(ngModel)]="contacto.asunto"
+      required
+      placeholder="Asunto"
+    >
+
+    <textarea
+      name="mensaje"
+      [(ngModel)]="contacto.mensaje"
+      required
+      placeholder="Mensaje"
+    ></textarea>
+
+    <button type="submit" [disabled]="formContacto.invalid">Enviar</button>
+  </form>
+
+  <p *ngIf="mensajeConfirmacion">
+    {{ mensajeConfirmacion }}
+  </p>
 </section>
