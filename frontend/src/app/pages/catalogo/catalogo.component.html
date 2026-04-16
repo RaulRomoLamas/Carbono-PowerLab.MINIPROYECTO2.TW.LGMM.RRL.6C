@@ -15,12 +15,20 @@
   <div>Envío rápido y seguro a todo México.</div>
 </section>
 
+<section class="search-box">
+  <input
+    type="text"
+    [(ngModel)]="busqueda"
+    placeholder="Buscar por nombre, categoria o marca"
+  >
+</section>
+
 <section>
   <p *ngIf="cargando">Cargando productos...</p>
 
   <div class="grid" *ngIf="!cargando">
     <app-producto-card
-      *ngFor="let producto of productos"
+      *ngFor="let producto of productosFiltrados"
       [producto]="producto"
       (agregar)="agregarAlCarrito($event)">
     </app-producto-card>

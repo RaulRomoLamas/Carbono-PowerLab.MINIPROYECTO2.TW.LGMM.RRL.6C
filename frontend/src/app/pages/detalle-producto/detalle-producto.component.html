@@ -1,8 +1,21 @@
-﻿<section *ngIf="producto; else sinProducto">
-  <h2>{{ producto.nombre }}</h2>
-  <img [src]="producto.imagen" [alt]="producto.nombre">
-  <p>{{ producto.descripcion }}</p>
-  <p>{{ producto.precio | currency }}</p>
+﻿<section *ngIf="producto; else sinProducto" class="detalle-card">
+  <div class="detalle-img">
+    <img [src]="producto.imagen" [alt]="producto.nombre">
+  </div>
+
+  <div class="detalle-info">
+    <h2>{{ producto.nombre }}</h2>
+
+    <p><strong>Categoria:</strong> {{ producto.categoria }}</p>
+    <p><strong>Marca:</strong> {{ producto.marca }}</p>
+    <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+    <p><strong>Stock:</strong> {{ producto.stock }}</p>
+    <p><strong>Disponible:</strong> {{ producto.disponible ? 'Si' : 'No' }}</p>
+
+    <p class="descripcion"><strong>Descripcion:</strong> {{ producto.descripcion }}</p>
+
+    <button type="button" (click)="agregarAlCarrito()">Agregar al carrito</button>
+  </div>
 </section>
 
 <ng-template #sinProducto>

@@ -13,6 +13,7 @@ import { ProductosService } from '../../services/productos.service';
 export class CatalogoComponent implements OnInit {
   productos: Producto[] = [];
   cargando = false;
+  busqueda = '';
 
   constructor(
     private readonly productosService: ProductosService,
@@ -34,5 +35,18 @@ export class CatalogoComponent implements OnInit {
 
   agregarAlCarrito(producto: any): void {
     this.carritoService.agregarProducto(producto);
+  }
+
+  get productosFiltrados(): Producto[] {
+    const filtro = this.busqueda.trim().toLowerCase();
+    if (!filtro) {
+      return this.productos;
+    }
+
+    return this.productos.filter((producto) =>
+      String(producto.nombre).toLowerCase().includes(filtro) ||
+      String(producto.categoria).toLowerCase().includes(filtro) ||
+      String(producto.marca).toLowerCase().includes(filtro)
+    );
   }
 }

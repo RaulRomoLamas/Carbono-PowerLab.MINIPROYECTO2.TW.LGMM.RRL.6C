@@ -2,6 +2,7 @@
 import { ActivatedRoute } from '@angular/router';
 
 import { Producto } from '../../models/producto.model';
+import { CarritoService } from '../../services/carrito.service';
 import { ProductosService } from '../../services/productos.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class DetalleProductoComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly productosService: ProductosService
+    private readonly productosService: ProductosService,
+    private readonly carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -25,5 +27,12 @@ export class DetalleProductoComponent implements OnInit {
         this.producto = data;
       });
     });
+  }
+
+  agregarAlCarrito(): void {
+    if (!this.producto) {
+      return;
+    }
+    this.carritoService.agregarProducto(this.producto);
   }
 }

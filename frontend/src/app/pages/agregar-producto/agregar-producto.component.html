@@ -1,14 +1,72 @@
-﻿<section>
+﻿<section class="wrapper">
   <h2>Agregar producto</h2>
 
   <form [formGroup]="form" (ngSubmit)="guardar()">
-    <input type="text" formControlName="nombre" placeholder="Nombre">
-    <input type="number" formControlName="precio" placeholder="Precio">
-    <input type="number" formControlName="stock" placeholder="Stock">
-    <button type="submit">Guardar</button>
+    <div class="row two">
+      <div>
+        <label>Nombre del producto</label>
+        <input type="text" formControlName="nombre" placeholder="Ej: Proteina Isolate 2lb">
+        <small *ngIf="hasError('nombre')">Minimo 3 caracteres.</small>
+      </div>
+      <div>
+        <label>Marca</label>
+        <select formControlName="marca">
+          <option *ngFor="let marca of marcas" [value]="marca">{{ marca }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row two">
+      <div>
+        <label>Categoria</label>
+        <select formControlName="categoria">
+          <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+        </select>
+      </div>
+      <div>
+        <label>Disponible</label>
+        <div class="switch">
+          <input type="checkbox" formControlName="disponible">
+          <span>{{ form.controls.disponible.value ? 'Si' : 'No' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row two">
+      <div>
+        <label>Precio</label>
+        <input type="number" formControlName="precio" placeholder="Ej: 450">
+        <small *ngIf="hasError('precio')">Debe ser mayor a 0.</small>
+      </div>
+      <div>
+        <label>Stock</label>
+        <input type="number" formControlName="stock" placeholder="Ej: 12">
+        <small *ngIf="hasError('stock')">No puede ser negativo.</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <label>URL de la imagen</label>
+      <input type="url" formControlName="imagen" placeholder="https://...">
+      <small *ngIf="hasError('imagen')">Usa una URL valida que inicie con http:// o https://</small>
+    </div>
+
+    <div class="row">
+      <label>Descripcion</label>
+      <textarea formControlName="descripcion" placeholder="Describe beneficios, uso y enfoque del producto"></textarea>
+      <small *ngIf="hasError('descripcion')">Minimo 12 caracteres.</small>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Guardar producto</button>
   </form>
 
-  <p *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">Nombre requerido</p>
-  <p *ngIf="form.get('precio')?.invalid && form.get('precio')?.touched">Precio invalido</p>
-  <p>{{ mensaje }}</p>
+  <aside class="preview">
+    <h3>Vista previa</h3>
+    <img [src]="imagenPreview" alt="Preview de producto">
+    <p><strong>{{ form.controls.nombre.value || 'Nombre del producto' }}</strong></p>
+    <p>{{ form.controls.precio.value | currency }}</p>
+    <p>{{ form.controls.categoria.value }} · {{ form.controls.marca.value }}</p>
+  </aside>
+
+  <p class="ok">{{ mensaje }}</p>
 </section>

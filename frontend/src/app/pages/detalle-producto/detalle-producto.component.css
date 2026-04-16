@@ -1,5 +1,48 @@
-﻿img {
+﻿.detalle-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.detalle-img img {
   width: 100%;
-  max-width: 520px;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: contain;
+  background: #0b0b0b;
   border-radius: 10px;
+}
+
+.detalle-info h2 {
+  margin-top: 0;
+}
+
+.detalle-info p {
+  margin: 8px 0;
+}
+
+.descripcion {
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+button {
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #b25f00;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .detalle-card {
+    grid-template-columns: 1fr;
+  }
 }
