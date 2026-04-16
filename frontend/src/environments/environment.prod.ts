@@ -1,4 +1,4 @@
 ﻿export const environment = {
   production: true,
-  apiBaseUrl: 'https://TU_BACKEND_VERCEL.vercel.app/api'
+  apiBaseUrl: 'https://powerlab-backend-ouwf-3lbmvzzzv-raulromolamas-projects.vercel.app/api'
 };

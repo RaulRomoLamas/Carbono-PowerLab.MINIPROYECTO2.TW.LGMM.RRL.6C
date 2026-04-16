@@ -1,4 +1,4 @@
 ﻿export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:3000/api'
+  apiBaseUrl: 'https://powerlab-backend-ouwf-3lbmvzzzv-raulromolamas-projects.vercel.app/api'
 };
