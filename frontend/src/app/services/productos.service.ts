@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Producto } from '../models/producto.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
-  private readonly url = 'http://localhost:3000/api/productos';
+  private readonly url = `${environment.apiBaseUrl}/productos`;
 
   constructor(private readonly http: HttpClient) {}
 
