@@ -1,14 +1,41 @@
-﻿<header class="topbar">
-  <h1>CARBONO POWERLAB</h1>
-  <nav>
-    <a routerLink="/">Inicio</a>
-    <a routerLink="/catalogo">Catalogo</a>
-    <a routerLink="/agregar">Agregar</a>
-    <a routerLink="/carrito">Carrito ({{ carritoService.contadorCarrito() }})</a>
-    <a routerLink="/contacto">Contacto</a>
-  </nav>
+﻿<div class="announcement">Envíos en toda la república mexicana · Productos saludables para tu entrenamiento</div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">⚡</div>
+    <div>
+      <h1>CARBONO POWERLAB</h1>
+      <p>Fitness, suplementos y estilo con energía.</p>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <nav>
+      <a routerLink="/">Inicio</a>
+      <a routerLink="/catalogo">Catálogo</a>
+      <a routerLink="/agregar">Agregar</a>
+      <a routerLink="/carrito">Carrito ({{ carritoService.contador() }})</a>
+      <a routerLink="/contacto">Contacto</a>
+    </nav>
+  </div>
 </header>
 
 <main class="content">
   <router-outlet></router-outlet>
 </main>
+
+<footer class="site-footer">
+  <div>
+    <h4>CARBONO POWERLAB</h4>
+    <p>Suplementos, accesorios y fitness para entrenar con potencia.</p>
+  </div>
+  <div>
+    <h4>Contacto</h4>
+    <p>WhatsApp: +52 449 100 2207</p>
+    <p>Email: contactogus@carbonopowerlab.com</p>
+  </div>
+  <div>
+    <h4>Horarios</h4>
+    <p>Lun - Vie: 9:00 a 20:00</p>
+    <p>Sabado: 10:00 a 16:00</p>
+  </div>
+</footer>

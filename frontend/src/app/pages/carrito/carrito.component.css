@@ -1,3 +1,15 @@
-﻿ul {
-  padding-left: 20px;
+﻿.item {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #dc2626;
+  color: #fff;
+  cursor: pointer;
 }

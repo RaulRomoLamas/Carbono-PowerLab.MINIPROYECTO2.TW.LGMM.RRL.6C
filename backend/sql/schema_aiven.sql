@@ -1,7 +1,6 @@
-﻿CREATE DATABASE carbono_powerlab_db;
-USE carbono_powerlab_db;
+﻿-- Script recomendado para Aiven (usa la base actual, normalmente defaultdb)
 
-CREATE TABLE productos (
+CREATE TABLE IF NOT EXISTS productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(150),
     categoria VARCHAR(100),
@@ -13,7 +12,7 @@ CREATE TABLE productos (
     disponible BOOLEAN
 );
 
-CREATE TABLE mensajes (
+CREATE TABLE IF NOT EXISTS mensajes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
     correo VARCHAR(150),

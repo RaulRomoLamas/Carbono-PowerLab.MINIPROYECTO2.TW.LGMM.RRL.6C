@@ -1,39 +1,102 @@
-﻿.topbar {
-  background: #0f172a;
-  color: #f8fafc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
-  flex-wrap: wrap;
-  gap: 10px;
+﻿.announcement {
+  background: #fff5bc;
+  color: #131313;
+  text-align: center;
+  padding: 10px 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-.topbar h1 {
+.topbar {
+  background: #050505;
+  color: #f8fafc;
+  display: grid;
+  gap: 18px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 242, 155, 0.25);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  background: var(--accent);
+  color: #131313;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+
+.brand h1 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+}
+
+.top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 nav {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
 nav a {
-  color: #f8fafc;
+  color: var(--text);
   text-decoration: none;
-  padding: 8px 10px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: background 0.18s ease, color 0.18s ease;
 }
 
 nav a:hover {
-  background: #ea580c;
+  background: rgba(255, 242, 155, 0.26);
+  color: #fff;
 }
 
 .content {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 18px;
+  padding: 24px;
 }
+
+.site-footer {
+  margin-top: 20px;
+  padding: 26px 24px;
+  background: #050505;
+  border-top: 1px solid rgba(255, 242, 155, 0.2);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.site-footer h4 {
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+
+.site-footer p {
+  margin: 4px 0;
+  color: #d6d0c2;
+}
+

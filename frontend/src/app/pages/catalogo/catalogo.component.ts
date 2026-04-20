@@ -12,8 +12,8 @@ import { ProductosService } from '../../services/productos.service';
 })
 export class CatalogoComponent implements OnInit {
   productos: Producto[] = [];
-  filtro = '';
   cargando = false;
+  busqueda = '';
 
   constructor(
     private readonly productosService: ProductosService,
@@ -33,15 +33,20 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
-  get productosFiltrados(): Producto[] {
-    const q = this.filtro.trim().toLowerCase();
-    if (!q) {
-      return this.productos;
-    }
-    return this.productos.filter((p) => p.nombre.toLowerCase().includes(q));
+  agregarAlCarrito(producto: any): void {
+    this.carritoService.agregarProducto(producto);
   }
 
-  agregarAlCarrito(producto: Producto): void {
-    this.carritoService.agregar(producto);
+  get productosFiltrados(): Producto[] {
+    const filtro = this.busqueda.trim().toLowerCase();
+    if (!filtro) {
+      return this.productos;
+    }
+
+    return this.productos.filter((producto) =>
+      String(producto.nombre).toLowerCase().includes(filtro) ||
+      String(producto.categoria).toLowerCase().includes(filtro) ||
+      String(producto.marca).toLowerCase().includes(filtro)
+    );
   }
 }

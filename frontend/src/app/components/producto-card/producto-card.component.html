@@ -1,0 +1,14 @@
+﻿<div class="card" [ngClass]="{ stockBajo: producto?.stock <= 5 }">
+  <h3>{{ producto?.nombre }}</h3>
+  <p><strong>Categoria:</strong> {{ producto?.categoria }}</p>
+  <p><strong>Marca:</strong> {{ producto?.marca }}</p>
+  <p><strong>Precio:</strong> {{ producto?.precio | currency }}</p>
+  <p><strong>Stock:</strong> {{ producto?.stock }}</p>
+  <p><strong>Disponible:</strong> {{ producto?.disponible ? 'Si' : 'No' }}</p>
+  <p><strong>Descripcion:</strong> {{ producto?.descripcion }}</p>
+  <img [src]="producto?.imagen" [alt]="producto?.nombre">
+  <div class="actions">
+    <button [routerLink]="['/producto', producto?.id]">Ver detalle</button>
+    <button (click)="agregar.emit(producto)">Agregar</button>
+  </div>
+</div>

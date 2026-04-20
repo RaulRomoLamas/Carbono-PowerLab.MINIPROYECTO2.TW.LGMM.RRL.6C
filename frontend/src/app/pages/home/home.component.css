@@ -1,16 +1,130 @@
 ﻿.hero {
-  padding: 32px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #101820, #263d52);
-  color: #fff;
+  display: grid;
+  gap: 30px;
+  padding: 38px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #131313 0%, #121212 55%, #1c1c1c 100%);
+  border: 1px solid rgba(255, 242, 155, 0.18);
+  box-shadow: var(--shadow);
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
 }
 
-.hero a {
-  display: inline-block;
-  margin-top: 12px;
-  background: #ff6a00;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 8px;
+.hero-copy {
+  display: grid;
+  gap: 18px;
 }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 242, 155, 0.16);
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1.02;
+  color: var(--accent);
+}
+
+.hero p {
+  max-width: 680px;
+  font-size: 1.05rem;
+  color: #d8d0be;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .primary,
+.hero-actions .secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.hero-actions .primary {
+  background: var(--accent);
+  color: #131313;
+}
+
+.hero-actions .secondary {
+  border: 1px solid rgba(255, 242, 155, 0.4);
+  color: var(--text);
+}
+
+.hero-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.hero-card {
+  background: rgba(255, 242, 155, 0.08);
+  border: 1px solid rgba(255, 242, 155, 0.25);
+  border-radius: 24px;
+  padding: 26px;
+  display: grid;
+  gap: 12px;
+}
+
+.hero-card span {
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.hero-card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.hero-card p {
+  margin: 0;
+  color: #ddd;
+}
+
+.hero-card.alt {
+  background: #0d0d0d;
+}
+
+.home-sections {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.home-sections article {
+  background: rgba(255, 242, 155, 0.08);
+  border: 1px solid rgba(255, 242, 155, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  min-height: 170px;
+}
+
+.home-sections h3 {
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+
+.home-sections p {
+  color: #d8d0be;
+  margin: 0;
+}
+

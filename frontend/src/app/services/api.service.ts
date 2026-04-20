@@ -6,7 +6,7 @@ import { MensajeContacto, Producto } from '../models/producto.model';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private readonly baseUrl = 'http://localhost:3000/api';
+  private readonly baseUrl = 'https://powerlab-backend-ouwf-3lbmvzzzv-raulromolamas-projects.vercel.app/api';
 
   constructor(private readonly http: HttpClient) {}
 
